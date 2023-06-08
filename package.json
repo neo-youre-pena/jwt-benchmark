@@ -1,0 +1,18 @@
+{
+  "name": "jwt-benchmark",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node fastify-server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^4.17.0",
+    "fastify-jwt": "^4.2.0",
+    "jsonwebtoken": "^9.0.0"
+  }
+}
