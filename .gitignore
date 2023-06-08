@@ -1,3 +1,5 @@
 node_modules
 iso*
 rs-*
+node_trace*
+.clinic

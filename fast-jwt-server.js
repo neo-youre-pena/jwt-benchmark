@@ -1,15 +1,9 @@
 const fastify = require("fastify");
-const fastifyJwt = require("fastify-jwt");
-const readFileSync = require("fs").readFileSync;
-
-const privateKey = readFileSync(`${__dirname}/rs-private.key`);
-const publicKey = readFileSync(`${__dirname}/rs-public.key`);
+const fastifyJwt = require("@fastify/jwt");
 
 const server = fastify();
 server.register(fastifyJwt, {
-  algorithm: "RS256",
-  secret: { private: privateKey, public: publicKey },
-  sign: { algorithm: "RS256" },
+  secret: "secret",
 });
 
 server.post("/signup", (request, reply) => {
@@ -22,7 +16,7 @@ server.get("/me", (request, reply) => {
   // This will decode and verify the token in the Authorization header
   request.jwtVerify((err, decoded) => {
     // Send the payload back to the user
-    return reply.send(err || request.user);
+    return reply.send(err || decoded);
   });
 });
 
