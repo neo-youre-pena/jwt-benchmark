@@ -6,7 +6,7 @@ After some load testing, we identified some performance issues in partner-gatewa
 
 - `jose-server.js` -> Uses the [jose]() library which partner gateway currently uses
 - `fast-jwt-server.js` -> Uses the [@fastify/jwt](https://github.com/fastify/fastify-jwt) dependency which uses the [fast-jwt](https://github.com/nearform/fast-jwt) under the hood
-- `jsonwebtoken-server.js` -> Uses the [jsonwebtoken]()
+- `jsonwebtoken-server.js` -> Uses the [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken)
 
 ## Running
 
@@ -15,11 +15,11 @@ After some load testing, we identified some performance issues in partner-gatewa
 - And for more detail information we will be using [FlameGraph](https://www.clinicjs.org/flame/) and [Doctor](https://www.clinicjs.org/doctor/).
 
 ```sh
-clinic flame --autocannon [ "/signup?payload=foo" -M POST -d 100 -c 500 ] -- node $SERVER_FILE_NAME
+clinic flame --autocannon [ "/signup?payload=foo" -M POST -d 100 -c 500 ] -- node ./src/$SERVER_FILE_NAME
 ```
 
 ```sh
-clinic doctor --autocannon [ "/signup?payload=foo" -M POST -d 100 -c 500 ] -- node $SERVER_FILE_NAME
+clinic doctor --autocannon [ "/signup?payload=foo" -M POST -d 100 -c 500 ] -- node ./src/$SERVER_FILE_NAME
 ```
 
 ## Results

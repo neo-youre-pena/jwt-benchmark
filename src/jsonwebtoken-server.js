@@ -13,9 +13,8 @@ server.get("/me", async (request, reply) => {
   // This will decode and verify the token in the Authorization header
   const authorizationHeader = request.headers.authorization;
   const token = authorizationHeader.split(" ")[1];
-  const result = await jwtVerify(token, privateKey);
-
-  reply.send(result);
+  const decoded = jwt.verify(token, "secret");
+  reply.send(decoded);
 });
 
 server.listen(3002, (err) => {
